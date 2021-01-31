@@ -11,6 +11,7 @@ module.exports = {
     extend: {},
   },
   variants: {
+    backgroundColor: ({ after }) => after(['disabled']),
     extend: {},
   },
   plugins: [],

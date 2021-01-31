@@ -35,7 +35,7 @@ export default function CreateShoppingListItemForm(
     >
       <input
         id={INPUT_ID}
-        className="border mr-1 mb-5 rounded-md"
+        className="border mr-2 mb-5 rounded-md p-2"
         data-testid={INPUT_ID}
         type="text"
         value={shoppingListItemName}
@@ -46,9 +46,10 @@ export default function CreateShoppingListItemForm(
       />
       <button
         type="button"
-        className="bg-green-700 rounded-md shadow-md p-1 text-white"
+        className="bg-green-700 rounded-md shadow-md p-2 text-white disabled:bg-gray-700"
         data-testid={BUTTON_ID}
         onClick={() => addShoppingListItem()}
+        disabled={shoppingListItemName.length === 0}
       >
         Add item
       </button>
