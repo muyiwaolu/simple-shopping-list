@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import "./App.css";
 import CreateShoppingListItemForm from "../components/CreateShoppingListItemForm/CreateShoppingListItemForm";
 import ShoppingList from "../components/ShoppingList/ShoppingList";
 import { ShoppingListModel } from "../models/ShoppingListItem";
