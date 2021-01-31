@@ -1,1 +1,3 @@
 src/reportWebVitals.ts
+craco.config.js
+tailwind.config.js
