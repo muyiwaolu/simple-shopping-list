@@ -9,12 +9,15 @@ function App(): JSX.Element {
   const [shoppingList, setShoppingList] = useState(initialShoppingList);
 
   return (
-    <div className="App">
-      <ShoppingList shoppingList={shoppingList} />
+    <div className="container mt-2 px-4 lg:px0">
+      <header className="text-2xl mb-2">
+        Simple shopping list
+      </header>
       <CreateShoppingListItemForm
         shoppingList={shoppingList}
         setShoppingList={setShoppingList}
       />
+      <ShoppingList shoppingList={shoppingList} />
     </div>
   );
 }

@@ -15,29 +15,40 @@ export default function CreateShoppingListItemForm(
   const { shoppingList, setShoppingList } = props;
 
   const [shoppingListItemName, setShoppingListItemName] = useState("");
+
+  const addShoppingListItem = () => {
+    const newShoppingListItem = createShoppingListItem(shoppingListItemName);
+    const newShoppingList = [...shoppingList, newShoppingListItem];
+
+    setShoppingList(newShoppingList);
+
+    // TODO: test this behaviour
+    setShoppingListItemName("");
+  };
+
   return (
-    <form>
-      <label htmlFor={INPUT_ID}>
-        Item name
-        <input
-          id={INPUT_ID}
-          data-testid={INPUT_ID}
-          type="text"
-          value={shoppingListItemName}
-          onChange={(event) => {
-            setShoppingListItemName(event.target.value);
-          }}
-        />
-      </label>
+    <form onSubmit={(event) => {
+      event.preventDefault();
+
+      addShoppingListItem();
+    }}
+    >
+      <input
+        id={INPUT_ID}
+        className="border mr-1 mb-5 rounded-md"
+        data-testid={INPUT_ID}
+        type="text"
+        value={shoppingListItemName}
+        placeholder="eggs"
+        onChange={(event) => {
+          setShoppingListItemName(event.target.value);
+        }}
+      />
       <button
         type="button"
+        className="bg-green-700 rounded-md shadow-md p-1 text-white"
         data-testid={BUTTON_ID}
-        onClick={() => {
-          const newShoppingListItem = createShoppingListItem(shoppingListItemName);
-          const newShoppingList = [...shoppingList, newShoppingListItem];
-
-          setShoppingList(newShoppingList);
-        }}
+        onClick={() => addShoppingListItem()}
       >
         Add item
       </button>
