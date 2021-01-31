@@ -1,8 +1,10 @@
 import React from "react";
 
 interface ShoppingListItemProps {
+  id: string;
   name: string;
   completed: boolean;
+  markShoppingListItemCompleted: (shoppingListItemId: string) => void;
 }
 
 function IconCheckCircle() {
@@ -14,14 +16,21 @@ function IconCheckCircle() {
 }
 
 export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Element {
-  const { name, completed } = props;
+  const {
+    id,
+    name,
+    completed,
+    markShoppingListItemCompleted,
+  } = props;
+
   const incompleteIndicator = completed ? null : <IconCheckCircle />;
   return (
     <div className="flex items-center w-1">
-      <span className="mr-1">{name}</span>
+      {!completed && <span className="mr-1">{name}</span>}
+      {completed && <del><span>{name}</span></del>}
       <button
         type="button"
-        onClick={}
+        onClick={() => markShoppingListItemCompleted(id)}
       >
         { incompleteIndicator }
       </button>

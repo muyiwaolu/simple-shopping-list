@@ -17,7 +17,7 @@ function App(): JSX.Element {
         shoppingList={shoppingList}
         setShoppingList={setShoppingList}
       />
-      <ShoppingList shoppingList={shoppingList} />
+      <ShoppingList shoppingList={shoppingList} setShoppingList={setShoppingList} />
     </div>
   );
 }
