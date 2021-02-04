@@ -22,7 +22,10 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
     return <EmptyState />;
   }
 
-  const markShoppingListItemCompleted = (shoppingListItemId: string) => {
+  const setShoppingListItemCompleted = (
+    shoppingListItemId: string,
+    completed: boolean,
+  ) => {
     // Clone the shopping list
     const shoppingListToUpdate = [...shoppingList];
 
@@ -31,7 +34,7 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
         // This is a shallow clone and a potential source for bugs
         // if the shopping list item model changes to have
         // nested objects.
-        return { ...shoppingListItem, completed: true };
+        return { ...shoppingListItem, completed };
       }
 
       return shoppingListItem;
@@ -50,7 +53,7 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
             id={id}
             name={name}
             completed={completed}
-            markShoppingListItemCompleted={markShoppingListItemCompleted}
+            setShoppingListItemCompleted={setShoppingListItemCompleted}
           />
         ))}
     </div>

@@ -1,19 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-export const ICON_CHECK_CIRCLE_ID = "icon-check-circle";
+export const CHECKBOX_TEST_ID = "shopping-list-item-checkbox";
 interface ShoppingListItemProps {
   id: string;
   name: string;
   completed: boolean;
-  markShoppingListItemCompleted: (shoppingListItemId: string) => void;
-}
-
-function IconCheckCircle() {
-  return (
-    <svg data-testid={ICON_CHECK_CIRCLE_ID} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-5 text-green-700">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  );
+  setShoppingListItemCompleted: (shoppingListItemId: string, completed: boolean) => void;
 }
 
 export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Element {
@@ -21,20 +13,38 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
     id,
     name,
     completed,
-    markShoppingListItemCompleted,
+    setShoppingListItemCompleted,
   } = props;
 
-  const incompleteIndicator = completed ? null : <IconCheckCircle />;
+  const [checked, setChecked] = useState(completed);
+
+  useEffect(() => {
+    setChecked(checked);
+  }, [checked]);
+
+  const variants = {
+    completed: <span className="mr-1">{name}</span>,
+    incomplete: <del><span className="mr-1">{name}</span></del>,
+  };
+
+  const checkboxName = `${CHECKBOX_TEST_ID}-${id}`;
+
   return (
     <div className="flex items-center w-1">
-      {!completed && <span className="mr-1">{name}</span>}
-      {completed && <del><span>{name}</span></del>}
-      <button
-        type="button"
-        onClick={() => markShoppingListItemCompleted(id)}
-      >
-        { incompleteIndicator }
-      </button>
+      {!completed && variants.incomplete}
+      {completed && variants.completed}
+      <label htmlFor={CHECKBOX_TEST_ID}>
+        <input
+          name={checkboxName}
+          type="checkbox"
+          data-testid={CHECKBOX_TEST_ID}
+          defaultChecked={checked}
+          onChange={(event) => {
+            setShoppingListItemCompleted(id, event.target.checked);
+            setChecked(event.target.checked);
+          }}
+        />
+      </label>
     </div>
   );
 }

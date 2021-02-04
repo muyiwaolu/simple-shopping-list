@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
 import { INPUT_ID, BUTTON_ID } from "../components/CreateShoppingListItemForm/CreateShoppingListItemForm";
-import { ICON_CHECK_CIRCLE_ID } from "../components/ShoppingListItem/ShoppingListItem";
+import { CHECKBOX_TEST_ID } from "../components/ShoppingListItem/ShoppingListItem";
 
 test("it renders an empty shopping list and a form to create list items", () => {
   render(<App />);
@@ -25,7 +25,7 @@ test("a new item can be added to the shopping list", () => {
   userEvent.click(addItemButton);
 
   const shoppingListItems = screen.getAllByText(/Bread/i);
-  const shoppingListItemIcons = screen.getAllByTestId(ICON_CHECK_CIRCLE_ID);
+  const shoppingListItemIcons = screen.getAllByTestId(CHECKBOX_TEST_ID);
 
   expect(shoppingListItems).toHaveLength(1);
   expect(shoppingListItemIcons).toHaveLength(1);

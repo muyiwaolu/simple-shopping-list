@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import ShoppingList from "./ShoppingList";
 import { createShoppingListItem, ShoppingListModel } from "../../models/ShoppingListItem";
-import { ICON_CHECK_CIRCLE_ID } from "../ShoppingListItem/ShoppingListItem";
+import { CHECKBOX_TEST_ID } from "../ShoppingListItem/ShoppingListItem";
 
 const SAMPLE_SHOPPING_LIST: ShoppingListModel = [
   createShoppingListItem("eggs"),
@@ -19,7 +19,7 @@ describe("an shopping list with at least one item", () => {
       screen.getByText(/toilet paper/i),
     ];
 
-    const listItemIcons = screen.getAllByTestId(ICON_CHECK_CIRCLE_ID);
+    const listItemIcons = screen.getAllByTestId(CHECKBOX_TEST_ID);
 
     listItemNames.forEach((listItemName) => expect(listItemName).toBeInTheDocument());
 
