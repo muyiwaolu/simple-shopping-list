@@ -2,16 +2,37 @@ import React from "react";
 import { ShoppingListModel } from "../../models/ShoppingListItem";
 import ShoppingListItem from "../ShoppingListItem/ShoppingListItem";
 
-interface ShoppingListProps {
+export const EMPTY_STATE_TEST_ID = "empty-shopping-list";
+export const SHOPPING_LIST_CLEAR_BUTTON_TEST_ID = "shopping-list-clear-button";
+
+function EmptyState() {
+  return (
+    <div data-testid={EMPTY_STATE_TEST_ID}>
+      There are currently no items in your shopping list. Add one using the form above.
+    </div>
+  );
+}
+export interface ShoppingListProps {
   shoppingList: ShoppingListModel;
   setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListModel>>;
 }
 
-function EmptyState() {
+export function ShoppingListClear(props: ShoppingListProps): JSX.Element | null {
+  const { shoppingList, setShoppingList } = props;
+
+  if (shoppingList.length === 0) {
+    return null;
+  }
+
   return (
-    <div>
-      There are currently no items in your shopping list. Add one using the form above.
-    </div>
+    <button
+      type="button"
+      className="bg-green-700 rounded-md shadow-md p-2 text-white disabled:bg-gray-700 my-5"
+      data-testid={SHOPPING_LIST_CLEAR_BUTTON_TEST_ID}
+      onClick={() => setShoppingList([])}
+    >
+      Clear
+    </button>
   );
 }
 
@@ -56,6 +77,10 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
             setShoppingListItemCompleted={setShoppingListItemCompleted}
           />
         ))}
+      <ShoppingListClear
+        shoppingList={shoppingList}
+        setShoppingList={setShoppingList}
+      />
     </div>
   );
 }
