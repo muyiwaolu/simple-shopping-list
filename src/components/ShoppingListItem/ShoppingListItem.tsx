@@ -23,8 +23,8 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
   }, [checked]);
 
   const variants = {
-    completed: <span className="ml-2">{name}</span>,
-    incomplete: <del><span className="ml-2">{name}</span></del>,
+    completed: <del><span className="ml-2">{name}</span></del>,
+    incomplete: <span className="ml-2">{name}</span>,
   };
 
   const checkboxName = `${CHECKBOX_TEST_ID}-${id}`;
