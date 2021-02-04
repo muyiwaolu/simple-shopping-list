@@ -23,17 +23,15 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
   }, [checked]);
 
   const variants = {
-    completed: <span className="mr-1">{name}</span>,
-    incomplete: <del><span className="mr-1">{name}</span></del>,
+    completed: <span className="ml-2">{name}</span>,
+    incomplete: <del><span className="ml-2">{name}</span></del>,
   };
 
   const checkboxName = `${CHECKBOX_TEST_ID}-${id}`;
 
   return (
     <div className="flex items-center w-1">
-      {!completed && variants.incomplete}
-      {completed && variants.completed}
-      <label htmlFor={CHECKBOX_TEST_ID}>
+      <label htmlFor={CHECKBOX_TEST_ID} className="inline-flex items-center">
         <input
           name={checkboxName}
           type="checkbox"
@@ -44,6 +42,8 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
             setChecked(event.target.checked);
           }}
         />
+        {!completed && variants.incomplete}
+        {completed && variants.completed}
       </label>
     </div>
   );
