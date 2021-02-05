@@ -34,7 +34,6 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
       <label htmlFor={CHECKBOX_TEST_ID} className="inline-flex items-center">
         <input
           name={checkboxName}
-          className="transform-gpu scale-150 md:scale-125"
           type="checkbox"
           data-testid={CHECKBOX_TEST_ID}
           defaultChecked={checked}
