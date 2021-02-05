@@ -6,6 +6,7 @@ interface ShoppingListItemProps {
   name: string;
   completed: boolean;
   setShoppingListItemCompleted: (shoppingListItemId: string, completed: boolean) => void;
+  removeShoppingListItem: (shoppingListItemId: string) => void;
 }
 
 export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Element {
@@ -14,6 +15,7 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
     name,
     completed,
     setShoppingListItemCompleted,
+    removeShoppingListItem,
   } = props;
 
   const [checked, setChecked] = useState(completed);
@@ -23,14 +25,14 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
   }, [checked]);
 
   const variants = {
-    completed: <del><span className="w-4/5">{name}</span></del>,
-    incomplete: <span className="w-4/5">{name}</span>,
+    completed: <del><span>{name}</span></del>,
+    incomplete: <span>{name}</span>,
   };
 
   const checkboxName = `${CHECKBOX_TEST_ID}-${id}`;
 
   return (
-    <li className="flex items-center w-screen">
+    <li className="flex items-center justify-between w-full">
       <label htmlFor={CHECKBOX_TEST_ID}>
         <input
           name={checkboxName}
@@ -46,6 +48,16 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
         {!completed && variants.incomplete}
         {completed && variants.completed}
       </label>
+      <button
+        type="button"
+        className="ml-5 text-green-700"
+        onClick={(event) => {
+          event.preventDefault();
+          removeShoppingListItem(id);
+        }}
+      >
+        <span role="img" aria-label="Trashcan">🗑</span>
+      </button>
     </li>
   );
 }

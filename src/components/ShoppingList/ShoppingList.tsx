@@ -64,6 +64,15 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
     setShoppingList(newShoppingList);
   };
 
+  const removeShoppingListItem = (shoppingListItemId: string) => {
+    // eslint-disable-next-line arrow-body-style
+    const newShoppingList = shoppingList.filter((shoppingListItem) => {
+      return shoppingListItem.id !== shoppingListItemId;
+    });
+
+    setShoppingList(newShoppingList);
+  };
+
   return (
     <div>
       <ul>
@@ -76,6 +85,7 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
               name={name}
               completed={completed}
               setShoppingListItemCompleted={setShoppingListItemCompleted}
+              removeShoppingListItem={removeShoppingListItem}
             />
           ))}
       </ul>
