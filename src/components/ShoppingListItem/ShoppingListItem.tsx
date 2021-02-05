@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { ShoppingListModel } from "../../models/ShoppingListItem";
+import { removeShoppingListItem, setShoppingListItemCompleted } from "../ShoppingList/Helpers";
 
 export const CHECKBOX_TEST_ID = "shopping-list-item-checkbox";
 interface ShoppingListItemProps {
   id: string;
   name: string;
   completed: boolean;
-  setShoppingListItemCompleted: (shoppingListItemId: string, completed: boolean) => void;
-  removeShoppingListItem: (shoppingListItemId: string) => void;
+  shoppingList: ShoppingListModel;
+  setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListModel>>;
 }
 
 export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Element {
@@ -14,8 +16,8 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
     id,
     name,
     completed,
-    setShoppingListItemCompleted,
-    removeShoppingListItem,
+    shoppingList,
+    setShoppingList,
   } = props;
 
   const [checked, setChecked] = useState(completed);
@@ -41,7 +43,12 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
           data-testid={CHECKBOX_TEST_ID}
           defaultChecked={checked}
           onChange={(event) => {
-            setShoppingListItemCompleted(id, event.target.checked);
+            setShoppingListItemCompleted(
+              id,
+              event.target.checked,
+              shoppingList,
+              setShoppingList,
+            );
             setChecked(event.target.checked);
           }}
         />
@@ -53,7 +60,7 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
         className="ml-5 text-green-700"
         onClick={(event) => {
           event.preventDefault();
-          removeShoppingListItem(id);
+          removeShoppingListItem(id, shoppingList, setShoppingList);
         }}
       >
         <span role="img" aria-label="Trashcan">🗑</span>

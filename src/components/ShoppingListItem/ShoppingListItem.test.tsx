@@ -8,8 +8,8 @@ describe("given a completed shopping list item", () => {
       <ShoppingListItem
         id="shopping-list-item-id"
         name="eggs"
-        setShoppingListItemCompleted={() => {}}
-        removeShoppingListItem={() => {}}
+        shoppingList={[]}
+        setShoppingList={() => {}}
         completed
       />,
     );
@@ -28,8 +28,8 @@ describe("given an incomplete shopping list item", () => {
         id="shopping-list-item-id"
         name="milk"
         completed={false}
-        setShoppingListItemCompleted={() => {}}
-        removeShoppingListItem={() => {}}
+        shoppingList={[]}
+        setShoppingList={() => {}}
       />,
     );
     const listItemName = screen.getByText(/milk/i);
