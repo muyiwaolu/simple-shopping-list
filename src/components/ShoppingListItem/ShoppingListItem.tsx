@@ -3,6 +3,7 @@ import { ShoppingListModel } from "../../models/ShoppingListItem";
 import { removeShoppingListItem, setShoppingListItemCompleted } from "../ShoppingList/Helpers";
 
 export const CHECKBOX_TEST_ID = "shopping-list-item-checkbox";
+export const REMOVE_BUTTON_ID = "shopping-list-item-remove";
 interface ShoppingListItemProps {
   id: string;
   name: string;
@@ -63,7 +64,13 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
           removeShoppingListItem(id, shoppingList, setShoppingList);
         }}
       >
-        <span role="img" aria-label="Trashcan">🗑</span>
+        <span
+          role="img"
+          aria-label="Trashcan"
+          data-testid={REMOVE_BUTTON_ID}
+        >
+          🗑
+        </span>
       </button>
     </li>
   );
