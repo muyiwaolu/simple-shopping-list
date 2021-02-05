@@ -12,12 +12,8 @@ function EmptyState() {
     </aside>
   );
 }
-export interface ShoppingListProps {
-  shoppingList: ShoppingListModel;
-  setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListModel>>;
-}
 
-export function ShoppingListClear(props: ShoppingListProps): JSX.Element | null {
+function ShoppingListClear(props: ShoppingListProps): JSX.Element | null {
   const { shoppingList, setShoppingList } = props;
 
   if (shoppingList.length === 0) {
@@ -36,33 +32,17 @@ export function ShoppingListClear(props: ShoppingListProps): JSX.Element | null 
   );
 }
 
+export interface ShoppingListProps {
+  shoppingList: ShoppingListModel;
+  setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListModel>>;
+}
+
 export default function ShoppingList(props: ShoppingListProps): JSX.Element {
   const { shoppingList, setShoppingList } = props;
 
   if (shoppingList.length === 0) {
     return <EmptyState />;
   }
-
-  const setShoppingListItemCompleted = (
-    shoppingListItemId: string,
-    completed: boolean,
-  ) => {
-    // Clone the shopping list
-    const shoppingListToUpdate = [...shoppingList];
-
-    const newShoppingList = shoppingListToUpdate.map((shoppingListItem) => {
-      if (shoppingListItem.id === shoppingListItemId) {
-        // This is a shallow clone and a potential source for bugs
-        // if the shopping list item model changes to have
-        // nested objects.
-        return { ...shoppingListItem, completed };
-      }
-
-      return shoppingListItem;
-    });
-
-    setShoppingList(newShoppingList);
-  };
 
   return (
     <div>
@@ -75,7 +55,8 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
               id={id}
               name={name}
               completed={completed}
-              setShoppingListItemCompleted={setShoppingListItemCompleted}
+              shoppingList={shoppingList}
+              setShoppingList={setShoppingList}
             />
           ))}
       </ul>
