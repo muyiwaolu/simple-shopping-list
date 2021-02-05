@@ -7,8 +7,8 @@ export const SHOPPING_LIST_CLEAR_BUTTON_TEST_ID = "shopping-list-clear-button";
 
 function EmptyState() {
   return (
-    <div data-testid={EMPTY_STATE_TEST_ID}>
-      There are currently no items in your shopping list. Add one using the form above.
+    <div data-testid={EMPTY_STATE_TEST_ID} className="text-xs">
+      There are no items in your shopping list. Add one using the form above.
     </div>
   );
 }

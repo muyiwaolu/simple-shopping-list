@@ -9,7 +9,7 @@ test("it renders an empty shopping list and a form to create list items", () => 
   render(<App />);
 
   // Form
-  const emptyStateText = screen.getByText(/There are currently no items in your shopping list. Add one using the form above./i);
+  const emptyStateText = screen.getByText(/There are no items in your shopping list. Add one using the form above./i);
   const addItemButtonCta = screen.getByText(/Add item/i);
 
   expect(emptyStateText).toBeInTheDocument();
