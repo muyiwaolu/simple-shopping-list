@@ -7,12 +7,10 @@ function App(): JSX.Element {
   const [shoppingList, setShoppingList] = useState(initialShoppingList);
 
   return (
-    <div className="container mt-2 px-4 lg:px0">
-      <GroceryList
-        shoppingList={shoppingList}
-        setShoppingList={setShoppingList}
-      />
-    </div>
+    <GroceryList
+      shoppingList={shoppingList}
+      setShoppingList={setShoppingList}
+    />
   );
 }
 

@@ -7,9 +7,9 @@ export const SHOPPING_LIST_CLEAR_BUTTON_TEST_ID = "shopping-list-clear-button";
 
 function EmptyState() {
   return (
-    <div data-testid={EMPTY_STATE_TEST_ID} className="text-xs">
+    <aside data-testid={EMPTY_STATE_TEST_ID} className="text-xs">
       There are no items in your shopping list. Add one using the form above.
-    </div>
+    </aside>
   );
 }
 export interface ShoppingListProps {
@@ -66,17 +66,19 @@ export default function ShoppingList(props: ShoppingListProps): JSX.Element {
 
   return (
     <div>
-      {shoppingList
-        .sort()
-        .map(({ id, name, completed }) => (
-          <ShoppingListItem
-            key={id}
-            id={id}
-            name={name}
-            completed={completed}
-            setShoppingListItemCompleted={setShoppingListItemCompleted}
-          />
-        ))}
+      <ul>
+        {shoppingList
+          .sort()
+          .map(({ id, name, completed }) => (
+            <ShoppingListItem
+              key={id}
+              id={id}
+              name={name}
+              completed={completed}
+              setShoppingListItemCompleted={setShoppingListItemCompleted}
+            />
+          ))}
+      </ul>
       <ShoppingListClear
         shoppingList={shoppingList}
         setShoppingList={setShoppingList}

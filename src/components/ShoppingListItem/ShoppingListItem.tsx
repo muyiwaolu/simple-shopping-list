@@ -30,10 +30,11 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
   const checkboxName = `${CHECKBOX_TEST_ID}-${id}`;
 
   return (
-    <div className="flex items-center w-1">
+    <li className="flex items-center w-1">
       <label htmlFor={CHECKBOX_TEST_ID} className="inline-flex items-center">
         <input
           name={checkboxName}
+          className="transform-gpu scale-150 md:scale-125"
           type="checkbox"
           data-testid={CHECKBOX_TEST_ID}
           defaultChecked={checked}
@@ -45,6 +46,6 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
         {!completed && variants.incomplete}
         {completed && variants.completed}
       </label>
-    </div>
+    </li>
   );
 }

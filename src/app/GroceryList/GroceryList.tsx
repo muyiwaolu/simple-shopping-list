@@ -5,7 +5,7 @@ import ShoppingList, { ShoppingListProps } from "../../components/ShoppingList/S
 export default function GroceryList(props: ShoppingListProps): JSX.Element {
   const { shoppingList, setShoppingList } = props;
   return (
-    <div>
+    <section className="container mt-2 px-4 lg:px0">
       <header className="text-2xl my-4">
         <span role="img" aria-label="Trolley">🛒</span>
         {" "}
@@ -19,6 +19,6 @@ export default function GroceryList(props: ShoppingListProps): JSX.Element {
         shoppingList={shoppingList}
         setShoppingList={setShoppingList}
       />
-    </div>
+    </section>
   );
 }
