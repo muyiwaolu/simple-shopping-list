@@ -29,4 +29,5 @@ test("a new item can be added to the shopping list", () => {
 
   expect(shoppingListItems).toHaveLength(1);
   expect(shoppingListItemIcons).toHaveLength(1);
+  expect(addItemNameInput).toHaveValue("");
 });

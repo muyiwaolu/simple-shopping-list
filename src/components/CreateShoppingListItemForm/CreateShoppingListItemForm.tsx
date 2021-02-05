@@ -22,7 +22,6 @@ export default function CreateShoppingListItemForm(
 
     setShoppingList(newShoppingList);
 
-    // TODO: test this behaviour
     setShoppingListItemName("");
   };
 
