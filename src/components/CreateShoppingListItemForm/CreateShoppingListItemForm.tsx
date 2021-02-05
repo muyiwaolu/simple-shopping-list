@@ -15,15 +15,32 @@ export default function CreateShoppingListItemForm(
   const { shoppingList, setShoppingList } = props;
 
   const [shoppingListItemName, setShoppingListItemName] = useState("");
+
+  const addShoppingListItem = () => {
+    const newShoppingListItem = createShoppingListItem(shoppingListItemName);
+    const newShoppingList = [...shoppingList, newShoppingListItem];
+
+    setShoppingList(newShoppingList);
+
+    setShoppingListItemName("");
+  };
+
   return (
-    <form>
-      <label htmlFor={INPUT_ID}>
-        Item name
+    <form onSubmit={(event) => {
+      event.preventDefault();
+
+      addShoppingListItem();
+    }}
+    >
+      <label htmlFor={INPUT_ID} className="flex flex-col">
+        <span className="mb-2 text-gray-700">Item name</span>
         <input
-          id={INPUT_ID}
+          name={INPUT_ID}
+          className="border mr-2 rounded-md p-2"
           data-testid={INPUT_ID}
           type="text"
           value={shoppingListItemName}
+          placeholder="eggs"
           onChange={(event) => {
             setShoppingListItemName(event.target.value);
           }}
@@ -31,13 +48,10 @@ export default function CreateShoppingListItemForm(
       </label>
       <button
         type="button"
+        className="bg-green-700 rounded-md shadow-md p-2 my-5 text-white disabled:bg-gray-700"
         data-testid={BUTTON_ID}
-        onClick={() => {
-          const newShoppingListItem = createShoppingListItem(shoppingListItemName);
-          const newShoppingList = [...shoppingList, newShoppingListItem];
-
-          setShoppingList(newShoppingList);
-        }}
+        onClick={() => addShoppingListItem()}
+        disabled={shoppingListItemName.length === 0}
       >
         Add item
       </button>

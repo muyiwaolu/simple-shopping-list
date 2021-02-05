@@ -1,25 +1,39 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import ShoppingListItem from "./ShoppingListItem";
+import ShoppingListItem, { CHECKBOX_TEST_ID } from "./ShoppingListItem";
 
 describe("given a completed shopping list item", () => {
   test("it renders the expected name and icon", () => {
-    render(<ShoppingListItem name="eggs" completed />);
+    render(
+      <ShoppingListItem
+        id="shopping-list-item-id"
+        name="eggs"
+        setShoppingListItemCompleted={() => {}}
+        completed
+      />,
+    );
     const listItemName = screen.getByText(/eggs/i);
-    const listItemIcon = screen.getByText(/☑️/i);
+    const listItemCheckbox = screen.getByTestId(CHECKBOX_TEST_ID);
 
     expect(listItemName).toBeInTheDocument();
-    expect(listItemIcon).toBeInTheDocument();
+    expect(listItemCheckbox).toBeChecked();
   });
 });
 
 describe("given an incomplete shopping list item", () => {
   test("it renders the expected name and icon", () => {
-    render(<ShoppingListItem name="milk" completed={false} />);
+    render(
+      <ShoppingListItem
+        id="shopping-list-item-id"
+        name="milk"
+        completed={false}
+        setShoppingListItemCompleted={() => {}}
+      />,
+    );
     const listItemName = screen.getByText(/milk/i);
-    const listItemIcon = screen.getByText(/❌/i);
+    const listItemCheckbox = screen.getByTestId(CHECKBOX_TEST_ID);
 
     expect(listItemName).toBeInTheDocument();
-    expect(listItemIcon).toBeInTheDocument();
+    expect(listItemCheckbox).not.toBeChecked();
   });
 });
