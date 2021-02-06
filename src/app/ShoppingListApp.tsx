@@ -38,7 +38,8 @@ function Footer(): JSX.Element {
   );
 
   return (
-    <footer className="flex flex-col items-start">
+    <footer className="flex flex-col items-start md:w-1/3">
+      <hr className="my-2" />
       <aside className="mb-2">
         <Link
           title="Fork me on Github"
@@ -66,8 +67,8 @@ function Footer(): JSX.Element {
 export default function ShoppingListApp(props: ShoppingListProps): JSX.Element {
   const { shoppingList, setShoppingList } = props;
   return (
-    <section className="container my-4 px-4 lg:px0">
-      <div>
+    <section className="container my-4 px-4 lg:px0 md:flex md:justify-between">
+      <div className="md:w-1/3">
         <Header />
         <CreateShoppingListItemForm
           shoppingList={shoppingList}
@@ -79,7 +80,6 @@ export default function ShoppingListApp(props: ShoppingListProps): JSX.Element {
           setShoppingList={setShoppingList}
         />
       </div>
-      <hr className="my-2" />
       <Footer />
     </section>
   );

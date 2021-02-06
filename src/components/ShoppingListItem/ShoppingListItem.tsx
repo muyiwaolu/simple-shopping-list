@@ -36,7 +36,7 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
 
   return (
     <li className="flex items-center justify-between w-full">
-      <label htmlFor={CHECKBOX_TEST_ID}>
+      <label htmlFor={CHECKBOX_TEST_ID} className="inline-block">
         <input
           name={checkboxName}
           className="mr-2"
