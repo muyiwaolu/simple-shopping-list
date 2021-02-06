@@ -27,13 +27,15 @@ export function removeShoppingListItem(
   shoppingListItemId: string,
   shoppingList: ShoppingListModel,
   setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListModel>>,
-): void {
+): ShoppingListModel {
   // eslint-disable-next-line arrow-body-style
   const newShoppingList = shoppingList.filter((shoppingListItem) => {
     return shoppingListItem.id !== shoppingListItemId;
   });
 
   setShoppingList(newShoppingList);
+
+  return newShoppingList;
 }
 
 export default {};

@@ -1,8 +1,9 @@
 import React from "react";
-import CreateShoppingListItemForm from "../../components/CreateShoppingListItemForm/CreateShoppingListItemForm";
-import ShoppingList, { ShoppingListProps } from "../../components/ShoppingList/ShoppingList";
+import CreateShoppingListItemForm from "../components/CreateShoppingListItemForm/CreateShoppingListItemForm";
+import ShoppingList, { ShoppingListProps } from "../components/ShoppingList/ShoppingList";
+import { updateShoppingListInLocalStorage } from "../storage/shoppingList";
 
-export default function GroceryList(props: ShoppingListProps): JSX.Element {
+export default function ShoppingListApp(props: ShoppingListProps): JSX.Element {
   const { shoppingList, setShoppingList } = props;
   return (
     <section className="container mt-2 px-4 lg:px0">
@@ -14,6 +15,7 @@ export default function GroceryList(props: ShoppingListProps): JSX.Element {
       <CreateShoppingListItemForm
         shoppingList={shoppingList}
         setShoppingList={setShoppingList}
+        setShoppingListLocalStorage={updateShoppingListInLocalStorage}
       />
       <ShoppingList
         shoppingList={shoppingList}

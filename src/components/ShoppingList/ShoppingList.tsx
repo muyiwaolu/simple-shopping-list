@@ -1,5 +1,6 @@
 import React from "react";
 import { ShoppingListModel } from "../../models/ShoppingListItem";
+import { clearShoppingListFromLocalStorage } from "../../storage/shoppingList";
 import ShoppingListItem from "../ShoppingListItem/ShoppingListItem";
 
 export const EMPTY_STATE_TEST_ID = "empty-shopping-list";
@@ -25,7 +26,10 @@ function ShoppingListClear(props: ShoppingListProps): JSX.Element | null {
       type="button"
       className="bg-green-700 rounded-md shadow-md p-2 text-white disabled:bg-gray-700 my-5"
       data-testid={SHOPPING_LIST_CLEAR_BUTTON_TEST_ID}
-      onClick={() => setShoppingList([])}
+      onClick={() => {
+        setShoppingList([]);
+        clearShoppingListFromLocalStorage();
+      }}
     >
       Clear
     </button>

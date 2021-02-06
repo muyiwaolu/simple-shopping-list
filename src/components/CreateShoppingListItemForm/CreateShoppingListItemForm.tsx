@@ -7,12 +7,13 @@ export const BUTTON_ID = "create-shopping-list-item-button";
 interface CreateShoppingListItemFormProps {
   shoppingList: ShoppingListModel;
   setShoppingList: (shoppingList: ShoppingListModel) => void;
+  setShoppingListLocalStorage: (shoppingList: ShoppingListModel) => void;
 }
 
 export default function CreateShoppingListItemForm(
   props: CreateShoppingListItemFormProps,
 ): JSX.Element {
-  const { shoppingList, setShoppingList } = props;
+  const { shoppingList, setShoppingList, setShoppingListLocalStorage } = props;
 
   const [shoppingListItemName, setShoppingListItemName] = useState("");
 
@@ -21,6 +22,7 @@ export default function CreateShoppingListItemForm(
     const newShoppingList = [...shoppingList, newShoppingListItem];
 
     setShoppingList(newShoppingList);
+    setShoppingListLocalStorage(newShoppingList);
 
     setShoppingListItemName("");
   };
