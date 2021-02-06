@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { ShoppingListModel } from "../models/ShoppingListItem";
-import GroceryList from "./GroceryList/GroceryList";
+import { initialiseShoppingListInLocalStorage } from "../storage/shoppingList";
+import ShoppingListApp from "./ShoppingListApp";
 
 function App(): JSX.Element {
-  const initialShoppingList: ShoppingListModel = [];
+  // TODO: Initial grocery could fail? Maybe introduce a graceful fallback.
+  const initialShoppingList: ShoppingListModel = initialiseShoppingListInLocalStorage();
   const [shoppingList, setShoppingList] = useState(initialShoppingList);
 
   return (
-    <GroceryList
+    <ShoppingListApp
       shoppingList={shoppingList}
       setShoppingList={setShoppingList}
     />

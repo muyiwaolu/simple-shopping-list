@@ -1,4 +1,5 @@
 import { ShoppingListModel } from "../../models/ShoppingListItem";
+import { updateShoppingListInLocalStorage } from "../../storage/shoppingList";
 
 export function setShoppingListItemCompleted(
   shoppingListItemId: string,
@@ -21,6 +22,7 @@ export function setShoppingListItemCompleted(
   });
 
   setShoppingList(newShoppingList);
+  updateShoppingListInLocalStorage(newShoppingList);
 }
 
 export function removeShoppingListItem(
@@ -34,6 +36,7 @@ export function removeShoppingListItem(
   });
 
   setShoppingList(newShoppingList);
+  updateShoppingListInLocalStorage(newShoppingList);
 }
 
 export default {};
