@@ -5,6 +5,8 @@ import App from "./App";
 import { INPUT_ID, BUTTON_ID } from "../components/CreateShoppingListItemForm/CreateShoppingListItemForm";
 import { CHECKBOX_TEST_ID, REMOVE_BUTTON_ID } from "../components/ShoppingListItem/ShoppingListItem";
 
+beforeEach(() => localStorage.clear());
+
 test("it renders an empty shopping list and a form to create list items", () => {
   render(<App />);
 
