@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { ShoppingListModel } from "../../models/ShoppingListItem";
-import { updateShoppingListInLocalStorage } from "../../storage/shoppingList";
 import { removeShoppingListItem, setShoppingListItemCompleted } from "../ShoppingList/Helpers";
 
 export const CHECKBOX_TEST_ID = "shopping-list-item-checkbox";
@@ -62,8 +61,7 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
         className="ml-5 text-green-700"
         onClick={(event) => {
           event.preventDefault();
-          const newShoppingList = removeShoppingListItem(id, shoppingList, setShoppingList);
-          updateShoppingListInLocalStorage(newShoppingList);
+          removeShoppingListItem(id, shoppingList, setShoppingList);
         }}
       >
         <span

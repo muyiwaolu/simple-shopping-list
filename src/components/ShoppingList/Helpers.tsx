@@ -1,4 +1,5 @@
 import { ShoppingListModel } from "../../models/ShoppingListItem";
+import { updateShoppingListInLocalStorage } from "../../storage/shoppingList";
 
 export function setShoppingListItemCompleted(
   shoppingListItemId: string,
@@ -21,21 +22,21 @@ export function setShoppingListItemCompleted(
   });
 
   setShoppingList(newShoppingList);
+  updateShoppingListInLocalStorage(newShoppingList);
 }
 
 export function removeShoppingListItem(
   shoppingListItemId: string,
   shoppingList: ShoppingListModel,
   setShoppingList: React.Dispatch<React.SetStateAction<ShoppingListModel>>,
-): ShoppingListModel {
+): void {
   // eslint-disable-next-line arrow-body-style
   const newShoppingList = shoppingList.filter((shoppingListItem) => {
     return shoppingListItem.id !== shoppingListItemId;
   });
 
   setShoppingList(newShoppingList);
-
-  return newShoppingList;
+  updateShoppingListInLocalStorage(newShoppingList);
 }
 
 export default {};
