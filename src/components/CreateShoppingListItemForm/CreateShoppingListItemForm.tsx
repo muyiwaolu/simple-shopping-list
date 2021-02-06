@@ -42,7 +42,7 @@ export default function CreateShoppingListItemForm(
           data-testid={INPUT_ID}
           type="text"
           value={shoppingListItemName}
-          placeholder="eggs"
+          placeholder="eggs 🍳"
           onChange={(event) => {
             setShoppingListItemName(event.target.value);
           }}

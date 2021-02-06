@@ -58,7 +58,7 @@ export default function ShoppingListItem(props: ShoppingListItemProps): JSX.Elem
       </label>
       <button
         type="button"
-        className="ml-5 text-green-700"
+        className="ml-5 text-green-700 hover:underline"
         onClick={(event) => {
           event.preventDefault();
           removeShoppingListItem(id, shoppingList, setShoppingList);
