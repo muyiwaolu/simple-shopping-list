@@ -17,6 +17,34 @@ test("it renders an empty shopping list and a form to create list items", () => 
   expect(emptyStateText).toBeInTheDocument();
   expect(addItemButtonCta).toBeInTheDocument();
 });
+
+test("an blank item cannot be added to the list", () => {
+  render(<App />);
+
+  const addItemNameInput = screen.getByTestId(INPUT_ID);
+  const addItemButton = screen.getByTestId(BUTTON_ID);
+
+  userEvent.type(addItemNameInput, "");
+  userEvent.click(addItemButton);
+
+  const errorMessage = screen.getAllByText(/Item name must be between 1 and 30 characters./i);
+
+  expect(errorMessage).toHaveLength(1);
+});
+
+test("an item with a long title cannot be added to the list", () => {
+  render(<App />);
+
+  const addItemNameInput = screen.getByTestId(INPUT_ID);
+  const addItemButton = screen.getByTestId(BUTTON_ID);
+
+  userEvent.type(addItemNameInput, "jkdsghjkadfsghjkldfsghjkladfgghjkldfgghjkldfghjkldfghjkldfghjkldfghjkldfghjkl");
+  userEvent.click(addItemButton);
+
+  const errorMessage = screen.getAllByText(/Item name must be between 1 and 30 characters./i);
+
+  expect(errorMessage).toHaveLength(1);
+});
 test("a new item can be added to the shopping list", () => {
   render(<App />);
 
