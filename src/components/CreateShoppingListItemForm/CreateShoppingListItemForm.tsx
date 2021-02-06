@@ -47,10 +47,14 @@ export default function CreateShoppingListItemForm(
     }}
     >
       <label htmlFor={INPUT_ID} className="flex flex-col">
-        <span className="text-xs mb-2 text-gray-700">Item name</span>
+        <span className="text-xs mb-2 text-gray-700 dark:text-white">Item name</span>
         <input
           name={INPUT_ID}
-          className={`border mr-2 rounded-md p-2 ${userAttemptedToSubmitInvalidForm ? "border-red-500" : ""}`}
+          className={`
+            border mr-2 rounded-md p-2 dark:bg-black
+            dark:placeholder-white dark:border-green-700
+            ${userAttemptedToSubmitInvalidForm ? "border-red-500" : ""}
+          `}
           data-testid={INPUT_ID}
           type="text"
           value={shoppingListItemName}
@@ -75,7 +79,7 @@ export default function CreateShoppingListItemForm(
       )}
       <button
         type="button"
-        className="bg-green-700 rounded-md shadow-md p-2 my-5 text-white disabled:bg-gray-700"
+        className="bg-green-700 rounded-md shadow p-2 my-5 text-white disabled:bg-gray-700"
         data-testid={BUTTON_ID}
         onClick={() => {
           if (!validShoppingListItem()) {

@@ -3,10 +3,10 @@ import { Link } from "../components/Link";
 
 export function DataStorageDisclosure(): JSX.Element {
   return (
-    <div>
+    <div className="py-2">
       <p>
         This website does not use cookies or share your data with third-parties
-        in any way shape or form.
+        in any way.
       </p>
       <p>
         The details of your shopping list are stored in your
@@ -16,10 +16,11 @@ export function DataStorageDisclosure(): JSX.Element {
           title="local storage"
           href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API"
         />
-        {" "}
-        and attempts to restore the list whenever you reload the page.
+        .
+      </p>
+      <p>
         If you want to remove the data stored in local storage, use the &quot;Clear&quot; button
-        above.
+        when an item has been added to the list.
       </p>
     </div>
   );

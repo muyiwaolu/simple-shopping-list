@@ -17,49 +17,27 @@ function Footer(): JSX.Element {
   const [showFullDataStorageDisclosure, setshowFullDataStorageDisclosure] = useState(false);
   const [showTroubleShootingHelp, setShowTroubleShootingHelp] = useState(false);
 
-  const fullDataStorageDisclosure = (
-    <div>
-      <ButtonLink
-        name="Show less"
-        onClick={() => setshowFullDataStorageDisclosure(false)}
-      />
-      <DataStorageDisclosure />
-    </div>
-  );
-
-  const troubleShootingHelp = (
-    <div>
-      <ButtonLink
-        name="Show less"
-        onClick={() => setShowTroubleShootingHelp(false)}
-      />
-      <TroubleShootingHelp />
-    </div>
-  );
-
   return (
-    <footer className="flex flex-col items-start md:w-1/3">
-      <hr className="my-2" />
+    <footer className="flex flex-col items-start py-4 md:w-1/3 md:mx-8 lg:w-1/2">
       <aside className="mb-2">
         <Link
           title="Fork me on Github"
           href="https://github.com/muyiwaolu/simple-shopping-list"
         />
       </aside>
-      {!showFullDataStorageDisclosure && (
-        <ButtonLink
-          name="How this website stores data"
-          onClick={() => setshowFullDataStorageDisclosure(true)}
-        />
-      )}
-      {showFullDataStorageDisclosure && fullDataStorageDisclosure}
-      {!showTroubleShootingHelp && (
-        <ButtonLink
-          name="Troubleshooting"
-          onClick={() => setShowTroubleShootingHelp(true)}
-        />
-      )}
-      {showTroubleShootingHelp && troubleShootingHelp}
+
+      <ButtonLink
+        name="How this website stores data"
+        onClick={() => setshowFullDataStorageDisclosure(!showFullDataStorageDisclosure)}
+      />
+      {showFullDataStorageDisclosure && <DataStorageDisclosure />}
+
+      <ButtonLink
+        name="Troubleshooting"
+        onClick={() => setShowTroubleShootingHelp(!showTroubleShootingHelp)}
+      />
+
+      {showTroubleShootingHelp && <TroubleShootingHelp />}
     </footer>
   );
 }
@@ -67,8 +45,8 @@ function Footer(): JSX.Element {
 export default function ShoppingListApp(props: ShoppingListProps): JSX.Element {
   const { shoppingList, setShoppingList } = props;
   return (
-    <section className="container my-4 px-4 lg:px0 md:flex md:justify-between">
-      <div className="md:w-1/3">
+    <section className="container p-4 md:flex md:justify-between md:p-8">
+      <div className="md:w-2/3 lg:w-1/2">
         <Header />
         <CreateShoppingListItemForm
           shoppingList={shoppingList}

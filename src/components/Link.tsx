@@ -4,7 +4,7 @@ export function Link(props: {title: string; href: string}): JSX.Element {
   const { title, href } = props;
   return (
     <a
-      className="text-green-700 hover:underline"
+      className="dark:text-green-500 text-green-700 visited:text-green-500 hover:underline"
       href={href}
     >
       {title}
@@ -16,7 +16,7 @@ export function ButtonLink(props: { name: string; onClick: () => void}) : JSX.El
   const { name, onClick } = props;
   return (
     <button
-      className="text-green-700 hover:underline mb-2"
+      className="dark:text-green-500 text-green-700 hover:underline mb-2"
       type="button"
       onClick={() => onClick()}
     >
