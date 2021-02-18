@@ -52,8 +52,8 @@ export default function CreateShoppingListItemForm(
           name={INPUT_ID}
           className={`
             border mr-2 rounded-md p-2 dark:bg-black
-            dark:placeholder-white
-            ${userAttemptedToSubmitInvalidForm ? "border-red-500 dark:border-red-500" : "dark:border-green-700"}
+            dark:placeholder-gray-600
+            ${userAttemptedToSubmitInvalidForm ? "border-red-500 dark:border-red-700" : ""}
           `}
           data-testid={INPUT_ID}
           type="text"
