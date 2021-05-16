@@ -6,17 +6,17 @@
     "@craco/craco": "^6.1.2",
     "@tailwindcss/postcss7-compat": "^2.1.2",
     "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
+    "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "@types/jest": "^26.0.23",
     "@types/node": "^14.14.41",
-    "@types/react": "^17.0.4",
-    "@types/react-dom": "^17.0.3",
+    "@types/react": "^17.0.5",
+    "@types/react-dom": "^17.0.5",
     "autoprefixer": "^9",
     "postcss": "^7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.1",
+    "react-scripts": "4.0.3",
     "store2": "^2.12.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^4.2.4",
@@ -44,12 +44,15 @@
   },
   "devDependencies": {
     "@types/uuid": "^8.3.0",
-    "@typescript-eslint/eslint-plugin": "^4.14.1",
-    "@typescript-eslint/parser": "^4.14.1",
-    "eslint": "^7.18.0",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-airbnb-typescript": "^12.0.0",
-    "eslint-plugin-react": "^7.22.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0"
+  },
+  "resolutions": {
+    "lodash": ">= 4.17.21"
   }
 }
