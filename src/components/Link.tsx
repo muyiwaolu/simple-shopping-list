@@ -1,6 +1,6 @@
 import React from "react";
 
-export function Link(props: {title: string; href: string}): JSX.Element {
+export function Link(props: { title: string; href: string }): JSX.Element {
   const { title, href } = props;
   return (
     <a
@@ -12,7 +12,7 @@ export function Link(props: {title: string; href: string}): JSX.Element {
   );
 }
 
-export function ButtonLink(props: { name: string; onClick: () => void}) : JSX.Element {
+export function ButtonLink(props: { name: string; onClick: () => void }) : JSX.Element {
   const { name, onClick } = props;
   return (
     <button
